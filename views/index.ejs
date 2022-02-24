@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry GriffinPixz | To Do List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" type="image/icon" href="img/WitchHat_SweetBlue.png">
+    <script src="https://kit.fontawesome.com/7327543dfd.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="gfp-container">
+        <div class="gfp-header">
+            <div class="gfp-header-images">
+                <img src="img/WitchHat2.png" class="witch-hat">
+                <img src="img/KannaBabyAnimated.gif" class="gfp-img">
+            </div>
+            <!-- <img src="img/KannaBabyAnimated.gif" class="gfp-img"> -->
+            <h1 class="gfp-title">Merry GriffinPixz</h1>
+            <p class="gfp-header-subtitle">Full-Stack Developer Witch</p>
+            <p class="welcome">Hi, welcome to Merry GrffinPixz's To Do List!</p>
+            <p class="inspire">Your goals are only realized when you put in the work and consistent efforts. Get started now and complete the tasks necessary to reach your goals!</p>
+        </div>
+    </div> 
+
+    <hr>
+
+    <div class="main">
+    
+        <h2 class="date"><%= newDay %></h2>
+
+        <form action="/" method="POST" class="form">
+            <input type="text" name="newItem" class="user-todo-input" required>
+            <button type="submit" name="submit-button" class="add-task-btn">Add Task</button>
+        </form>
+
+        <div class="todolist-container">
+            <ul class="todo-list">
+
+                <% for (var i = 0; i < toDoListItems.length; i++) { %>
+                    <li class="todo-list-item">
+                        <div class="todo-list-item-content">
+                            <div class="todo-no-wrap">
+                                <span class="todo-no"><%= 1+i %></span>
+                            </div>
+                            <div class="todo-list-item-text"><%= toDoListItems[i] %></div>
+                        </div>
+                        <i class="fa-solid fa-broom todo-list-item-icon"></i>
+                    </li>
+                <% } %>
+
+            </ul>
+        </div>
+
+        <!-- <p>&copy; 2022 GriffinPixz at Penn Techworks LLC</p> -->
+        <!-- <p>&copy; 2022 GriffinPixz at GriffinWitch LLC</p> -->
+        <p class="copyright">&copy; 
+            <span>2022</span>
+            <!-- <span>Constellation Technology LLC</span> -->
+            <span style="padding: 0 4px;">PixelRun Dev LLC</span>
+            <!-- <span style="padding: 0 4px;">PixelRunDev LLC</span> -->
+            <!-- <span style="padding: 0 4px;">PixelRun Development LLC</span> -->
+            <span class="creator">By <a href="https://github.com/GriffinPixz" target="_blank">GriffinPixz</a></span>
+        </p>
+    
+    </div>
+</body>
+
+</html>
+
+<!-- <i class="fa-solid fa-wand-sparkles"></i>
+<i class="fa-solid fa-broom"></i>
+<i class="fa-solid fa-book-sparkles"></i>
+<i class="fa-solid fa-hat-witch"></i>
+<i class="fa-solid fa-hat-wizard"></i>
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+<i class="fa-solid fa-wand-magic"></i>
+<i class="fa-solid fa-hand-holding-magic"></i>
+<i class="fa-solid fa-cauldron"></i> -->

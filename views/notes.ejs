@@ -1,0 +1,40 @@
+<!-- EJS scriptlet tag only allows you to use control flow in html -->
+<%if (dayType==="Saturday" || dayType==="Sunday" ) {%>
+    <h2 style="color: #d46617;">
+        <%= dayType %>'s To Do List
+    </h2>
+<%} else {%>
+    <h2 style="color: #749b16;">
+        <%= dayType %>'s To Do List
+    </h2>
+<%}%>
+
+<!-- ********** To Do List ********** -->
+<div class="todolist-container">
+    <ul class="todo-list">
+        <li class="todo-list-item">
+            <span><span class="todo-no">1</span> Buy grocery</span>
+            <i class="fa-solid fa-broom todo-list-item-icon"></i>
+        </li>
+        <li class="todo-list-item">
+            <span><span class="todo-no">2</span> Clean the house</span>
+            <i class="fa-solid fa-broom todo-list-item-icon"></i>
+        </li>
+        <li class="todo-list-item">
+            <span><span class="todo-no">3</span> Work on web development</span>
+            <i class="fa-solid fa-broom todo-list-item-icon"></i>
+        </li>
+        <li class="todo-list-item">
+            <span><span class="todo-no">4</span> Exercise</span>
+            <i class="fa-solid fa-broom todo-list-item-icon"></i>
+        </li>
+        <li class="todo-list-item">
+            <span><span class="todo-no">5</span> Cook dinner for Daddy</span>
+            <i class="fa-solid fa-broom todo-list-item-icon"></i>
+        </li>
+        <li class="todo-list-item">
+            <span><span class="todo-no">6</span> Sexy time OwO</span>
+            <i class="fa-solid fa-broom todo-list-item-icon"></i>
+        </li> -->
+    </ul>
+</div>
