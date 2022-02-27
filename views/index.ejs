@@ -20,9 +20,9 @@
             </div>
             <!-- <img src="img/KannaBabyAnimated.gif" class="gfp-img"> -->
             <h1 class="gfp-title">Merry GriffinPixz</h1>
-            <p class="gfp-header-subtitle">Full-Stack Developer Witch</p>
-            <p class="welcome">Hi, welcome to Merry GrffinPixz's To Do List!</p>
-            <p class="inspire">Your goals are only realized when you put in the work and consistent efforts. Get started now and complete the tasks necessary to reach your goals!</p>
+            <p class="gfp-header-subtitle">Aspiring Full-Stack Developer</p>
+            <p class="welcome">Hi, welcome to GrffinPixz's Magical To Do List!</p>
+            <p class="inspire">Your goals are only realized when you put in the work and consistent efforts. Get started today and complete the tasks necessary to reach your goals!</p>
         </div>
     </div> 
 
@@ -33,23 +33,29 @@
         <h2 class="date"><%= newDay %></h2>
 
         <form action="/" method="POST" class="form">
-            <input type="text" name="newItem" class="user-todo-input" required>
+            <input type="text" name="newItem" placeholder="What goals do you want to achieve today?" class="user-todo-input" autocomplete="off" required>
             <button type="submit" name="submit-button" class="add-task-btn">Add Task</button>
         </form>
 
         <div class="todolist-container">
-            <ul class="todo-list">
+            <ul class="todo-list" id="todos">
 
                 <% for (var i = 0; i < toDoListItems.length; i++) { %>
-                    <li class="todo-list-item">
+
+                    <% let count = "num"+i %>
+                    
+                    <!-- <li class="todo-list-item" onClick="(function() { alert('Hey i am calling'); })"> -->
+                    <li class="todo-list-item"">
                         <div class="todo-list-item-content">
                             <div class="todo-no-wrap">
+                                <!-- <input type="checkbox"> -->
                                 <span class="todo-no"><%= 1+i %></span>
                             </div>
                             <div class="todo-list-item-text"><%= toDoListItems[i] %></div>
                         </div>
-                        <i class="fa-solid fa-broom todo-list-item-icon"></i>
-                    </li>
+                        <!-- <i class="fa-solid fa-broom todo-list-item-icon"></i> -->
+                        <!-- <input type="checkbox" class="todo-list-item-checkbox"> -->
+                    </li> 
                 <% } %>
 
             </ul>
@@ -64,9 +70,100 @@
             <!-- <span style="padding: 0 4px;">PixelRunDev LLC</span> -->
             <!-- <span style="padding: 0 4px;">PixelRun Development LLC</span> -->
             <span class="creator">By <a href="https://github.com/GriffinPixz" target="_blank">GriffinPixz</a></span>
+            <!-- <img src="img/MerryGriffinPixz.png" class="copy-img"> -->
         </p>
     
     </div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/completed-task.js"></script>
+
+    <script>
+
+        // $('li.todo-list-item').on('click', function (e) {
+        //     let target = $(e.target);
+        //     if (target.is('li.todo-list-item')) {
+        //         target.toggleClass('completed-task').slideToggle();
+        //     }
+        // });
+
+        // $('li.todo-list-item').on('click', function (e) {
+        //     let target = $(e.target);
+        //     historyToDoItems.push(target);
+        //     target.hide();
+        //     // if (target.is('li.todo-list-item')) {
+        //     //     target.hide();
+        //     // }
+        // });
+
+        // ***********************************************************
+
+
+        // $("li").each(function (i) { 
+        //     this.id = "todo"+i; 
+        // });
+
+        // $('#todos li').each(function (i, todo) {
+        //         todo.id = i + 1;
+        //     });
+
+        // function completed() {
+        //     $(".todo-list-item").toggleClass("completed-task")
+        // }
+
+        // document.querySelectorAll(".todo-list-item")
+
+        // $('.todo-list').on('click', '.todo-list-item', function (e) {
+        //     // e.preventDefault();
+        //     var target = $(e.target);
+        //     // var parentUl = target.closest('.todo-list');
+        //     // Find all links inside the current parent ul element.
+        //     // parentUl.find('.todo-list-item').removeClass('completed-task');
+        //     target.toggleClass('completed-task');
+        // });
+
+        // function completed(e) {
+        //     $(e).toggleClass("completed-task")
+        //     $('.todo-list-item', $(this).closest('ul')).toggleClass("completed-task")
+        //     $("#count" + i).toggleClass("completed-task")
+        // }
+
+        // $('.button-switch li a').click(function (e) {
+        //         e.preventDefault();
+        //         $('li a', $(this).closest('ul')).removeClass('active');
+        //         $(this).addClass('active');
+        //     });
+
+            // function completed() {
+                    // let num = 0;
+                    // let itemNum = "#item" + num;
+                    // $(itemNum).attr("class", "completed-task")
+                // $(".todo-list-item").attr("class", "completed-task")
+
+                // $(".todo-list-item").toggleClass("completed-task")
+                // $(toDoListItems[i]).ON("click", function () { 
+                //     this.toggleClass("completed-task")
+                // }
+                // this.toggleClass("completed-task")
+                
+                // if (!$(".todo-list-item").hasClass("completed-task")) {
+                //     $(".todo-list-item").attr("class", "completed-task")
+                // } else {
+                //     $(".todo-list-item").removeClass("completed-task")
+                // }
+            // }
+
+            // toDoItems.forEach(todo => {
+            //         let count = 0;
+            //         let counter = "todo" + count;
+
+            //         todo.attr("id", counter);
+            //     });
+
+    </script>
 </body>
 
 </html>
