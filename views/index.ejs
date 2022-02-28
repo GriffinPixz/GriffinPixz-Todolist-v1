@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,7 +11,8 @@
     <script src="https://kit.fontawesome.com/7327543dfd.js" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body> -->
+<%- include("header") -%>
     <div class="gfp-container">
         <div class="gfp-header">
             <div class="gfp-header-images">
@@ -23,6 +24,8 @@
             <p class="gfp-header-subtitle">Aspiring Full-Stack Developer</p>
             <p class="welcome">Hi, welcome to GrffinPixz's Magical To Do List!</p>
             <p class="inspire">Your goals are only realized when you put in the work and consistent efforts. Get started today and complete the tasks necessary to reach your goals!</p>
+
+            <%- include("todo-nav") -%>
         </div>
     </div> 
 
@@ -30,11 +33,11 @@
 
     <div class="main">
     
-        <h2 class="date"><%= newDay %></h2>
+        <h2 class="date"><%= listTitle %></h2>
 
         <form action="/" method="POST" class="form">
             <input type="text" name="newItem" placeholder="What goals do you want to achieve today?" class="user-todo-input" autocomplete="off" required>
-            <button type="submit" name="submit-button" class="add-task-btn">Add Task</button>
+            <button class="add-task-btn" type="submit" name="toDoListTitle" value=<%= listTitle %>>Add Task</button>
         </form>
 
         <div class="todolist-container">
@@ -164,9 +167,10 @@
             //     });
 
     </script>
-</body>
+<%- include("footer") -%>
+<!-- </body>
 
-</html>
+</html> -->
 
 <!-- <i class="fa-solid fa-wand-sparkles"></i>
 <i class="fa-solid fa-broom"></i>

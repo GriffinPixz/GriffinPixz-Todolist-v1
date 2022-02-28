@@ -65,6 +65,21 @@
 
 // let historyToDoItems = [];
 
+
+    // document.querySelector('li.todo-list-item').on('click', function (e) {
+    //     let target = e.target;
+    //     historyToDoItems.push(target);
+    //     target.hide();
+
+    //     console.log(historyToDoItems);
+
+    //     // if (target.is('li.todo-list-item')) {
+    //     //     target.hide();
+    //     // }
+    // });
+
+    
+
 $('li.todo-list-item').on('click', function (event) {
     let target = $(event.target);
     $("li.todo-list-item .todo-list-item-checkbox").removeClass("completed-task")

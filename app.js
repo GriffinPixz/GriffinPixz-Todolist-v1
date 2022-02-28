@@ -18,6 +18,7 @@ let toDoItems = [
     // "Go to class \"How To Fly Efficiently With Magic Broom\" with Professor Nicholas M. McGriffith at 13:31 AM",
 ];
 let workToDoItems = [];
+let homeToDoItems = [];
 // let historyToDoItems = [];
 
 
@@ -33,8 +34,8 @@ app.get('/', (req, res) => {
     
     let day = today.toLocaleDateString("en-US", options)
 
-    res.render("index", { newDay: day, toDoListItems: toDoItems });
-    // res.render("index", { listTitle: day, toDoListItems: toDoItems });
+    // res.render("index", { newDay: day, toDoListItems: toDoItems });
+    res.render("index", { listTitle: day, toDoListItems: toDoItems });
 
     // console.log("✅ Everything works perfectly. GriffinPixz caught a GET request to \"/\".");
 
@@ -42,40 +43,56 @@ app.get('/', (req, res) => {
 
 app.post("/", (req, res) => { 
 
+    console.log(req.body);
+
     let htmlData = req.body;
-    console.log("* data value => " + htmlData.newItem);
 
     let toDoItem = htmlData.newItem;
-    toDoItems.push(toDoItem);
+    console.log("* To do item => " + toDoItem);
 
-    res.redirect("/");
+    // toDoItems.push(toDoItem);
 
-    // document.querySelector('li.todo-list-item').on('click', function (e) {
-    //     let target = e.target;
-    //     historyToDoItems.push(target);
-    //     target.hide();
+    // res.redirect("/");
 
-    //     console.log(historyToDoItems);
-
-    //     // if (target.is('li.todo-list-item')) {
-    //     //     target.hide();
-    //     // }
-    // });
+    if (htmlData.toDoListTitle === "Work") {
+        workToDoItems.push(toDoItem);
+        res.redirect("/worklist");
+    } else { 
+        toDoItems.push(toDoItem);
+        res.redirect("/");
+    }
 });
 
 
-app.get('/worklist', (req, res) => { 
-    res.render("index", { listTitle: "Work To Do List", toDoListItems: workToDoItems });
+app.get('/work', (req, res) => { 
+    res.render("index", { listTitle: "Work", toDoListItems: workToDoItems });
 });
 
-app.post('/worklist', (req, res) => { 
+app.post('/work', (req, res) => { 
     let workData = req.body;
-    let workToDoItems = workData.newItem;
-    workToDoItems.push(workToDoItems);
+    let workToDoItem = workData.newItem;
+    workToDoItems.push(workToDoItem);
 
     res.redirect("/worklist");
 });
 
+
+app.get('/home', (req, res) => { 
+    res.render("index", { listTitle: "Home", toDoListItems: homeToDoItems });
+});
+
+app.post('/home', (req, res) => { 
+    let workData = req.body;
+    let workToDoItem = workData.newItem;
+    workToDoItems.push(workToDoItem);
+
+    res.redirect("/home");
+});
+
+
+app.get('/about', (req, res) => { 
+    res.render("about");
+});
 
 
 app.listen(port, () => { 
