@@ -264,6 +264,8 @@ a:hover {
     color: #4d4f81;
     color: #474a7d;
     margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    margin-top: 2.25rem;
     /* color: #444573; */
 }
 
@@ -299,6 +301,7 @@ a:hover {
     letter-spacing: .5px;
     line-height: 1.375;
     letter-spacing: .625px;
+    word-break: break-word;
 }
 
 .todo-no-wrap {
@@ -410,7 +413,10 @@ a:hover {
     border: 1px solid #797dd2;
 
     background-color: #868bd7;
+
     background-color: #8489d9;
+    background-color: #9499e9;
+    background-color: #8d92e3;
     box-shadow: inset -4px -2px 8px rgb(55 58 136 / 50%), 2px 4px 10px #7d81ca;
     border: 1px solid #8387da;
     border-top-color: #8489d9;
@@ -634,11 +640,12 @@ a:hover {
     background-color: #6565a5;
 
     background-color: #6368bd;
+    background-color: #7378c4;
 }
 
 .todo-list-item:active .todo-list-item-content,
 .todo-list-item:active .todo-list-item-icon {
-    opacity: .3;
+    opacity: .5;
 }
 
 .todo-list-item:hover i.todo-list-item-icon {
@@ -767,6 +774,7 @@ hr {
     max-width: 456px;
     max-width: 480px;
     max-width: 440px;
+    max-width: 460px;
     background-color: #ffd1f6;
     /* background-color: #fbc2f1; */
     font-size: .875rem;
@@ -800,14 +808,33 @@ hr {
     box-shadow: 2px 4px 6px rgb(137 139 215 / 50%);
     /* color: #5356a5; */
     text-shadow: 1px 1px 5px rgb(82 94 219 / 50%);
-    transition: all .3s ease;
+
+    font-family: 'Fira Mono', monospace;
+    letter-spacing: .25px;
+    border-radius: 1rem;
+    background-color: #827dc0;
+    color: #ffffff;
+    padding: 0.375rem 1.125rem;
+    box-shadow: inset -2px -2px 4px rgb(55 58 136 / 50%), 1px 3px 10px rgb(86 91 170 / 60%);
+    background-image: linear-gradient(45deg, #f2d4f0, #8489d9);
+    background-image: linear-gradient(220deg, #f8bce6, #707fe2 80%);
+    background-image: linear-gradient(220deg, #f9c7ea, #707fe2 80%);
+    text-shadow: 1px 1px 4px #6568c5;
+    text-shadow: 1px 1px 4px rgb(101, 104, 197, .6);
+    transition: all .4s ease;
 }
-.gfp-header:hover .welcome {
+.welcome:hover {
+    background-image: linear-gradient(220deg, #f2d4f0, #8489d9);
+    background-image: linear-gradient(220deg, #f2d4f0, #7a89eb 80%);
+    background-image: linear-gradient(220deg, #f2d4f0, #7a86eb 80%);
+    box-shadow: inset -2px -2px 4px rgb(55 58 136 / 50%), 1px 3px 15px rgb(86 91 170 / 60%);
+}
+/* .gfp-header:hover .welcome {
     background-image: linear-gradient(90deg, #f8bce1, #7078e2);
     background-image: linear-gradient(90deg, #ffc5e9, #7078e2 80%);
     background-image: linear-gradient(120deg, #ffc5e9, #6c73db 80%);
     box-shadow: 2px 4px 10px rgb(122 124 193 / 60%);
-}
+} */
 
 .user {
     color: #ffdceb;
@@ -825,8 +852,9 @@ hr {
     border-radius: 31px;
     box-shadow: 3px 3px 10px rgb(142 141 192 / 50%);
     border: none;
-    padding: 0 1.25rem;
+    padding: 0 1.5rem;
     transition: all .2s ease;
+    /* text-align: center; */
 }
 
 .user-todo-input:hover {
@@ -845,9 +873,10 @@ hr {
     border-radius: 25px;
     border: 0;
     background-color: #41436e;
+    background-color: #4a4c7c;
     color: white;
     width: 20%;
-    box-shadow: inset -4px -2px 8px #2b2b58, 2px 4px 8px rgb(87 91 158 / 50%);
+    box-shadow: inset -5px -4px 8px #2b2b58, 2px 4px 8px rgb(87 91 158 / 50%);
     transition: all .2s ease;
     font-weight: 500;
     font-family: 'Fira Mono', monospace;
@@ -860,15 +889,19 @@ hr {
     /* color: #f7bdd8; */
     background-color: #33355c;
     box-shadow: inset -4px -2px 8px #1a1a37, 2px 4px 8px rgb(87 91 158 / 80%);
+
+    background-color: #3a3c64;
+    box-shadow: inset -4px -2px 8px rgb(26 26 55 / 90%), 2px 4px 8px rgba(103, 107, 179, 0.6);
 }
 .add-task-btn:active {
-    box-shadow: inset -4px -2px 8px #1a1a37, 2px 4px 20px rgb(87 91 158 / 80%);
-    color: #fbc6ea;
+    box-shadow: inset -4px -2px 8px #1a1a37, 2px 4px 15px rgba(106, 110, 180, 0.8);
+    /* color: #fbc6ea;
     color: #f7bde5;
     color: #ffdcea;
     color: #fad2e2;
     color: #f5c5d8;
-    color: #f5bed4;
+    color: #f5bed4; */
+    /* color: #f8cbdd; */
 }
 
 .copy-img {
@@ -878,6 +911,13 @@ hr {
 }
 
 
+
+.todo-nav {
+    margin-bottom: 3rem;
+}
+.todo-nav-title {
+    margin-bottom: 1.25rem;
+}
 .todo-nav-cat {
     list-style-type: none;
     padding-inline-start: 0;
@@ -893,20 +933,45 @@ hr {
     transition: all .2s ease;
     font-size: .9rem;
     font-family: 'Fira Mono', monospace;
-    letter-spacing: .5px;
+    letter-spacing: .25px;
     background-color: antiquewhite;
     padding: 0.25rem 0.75rem;
     border-radius: 1rem;
 
+    background-color: #827dc0;
+    color: #5661ad;
+    /* color: #5d69b3; */
     color: #ffffff;
+    /* color: #5d67a7; */
     padding: 0.375rem 1.125rem;
+    /* padding: 0.4rem 1.25rem; */
     box-shadow: inset -2px -2px 4px rgb(55 58 136 / 50%), 1px 3px 2px rgb(125 129 202);
-    background-image: linear-gradient(45deg, #f2d4f0, #8489d9);
+    box-shadow: inset -2px -2px 4px rgb(55 58 136 / 50%), 1px 3px 10px #7d81ca;
+    box-shadow: inset -2px -2px 4px rgb(55 58 136 / 50%), 1px 3px 10px rgb(86 91 170 / 70%);
+    /* background-image: linear-gradient(45deg, #f2d4f0, #8489d9); */
+    /* background-image: linear-gradient(45deg, #7d81d8, #8489d9); */
+    background-color: #767acd;
+    /* background-color: #7d81d8; */
+    text-shadow: 1px 1px 4px #6568c5;
 }
 
 .todo-nav-cat a:hover {
-    color: #2b2b58;
+    /* color: #2b2b58; */
+    /* color: #434d94; */
+    /* color: #424a8a; */
+    /* color: #474a7d; */
+    background-color: #8489d9;
+    background-color: #979ae7;
+    /* color: #373f77; */
     text-decoration: none;
+    /* text-shadow: 1px 1px 2px #b7b9ec; */
+    /* text-shadow: 1px 1px 3px #f1def1; */
+    /* text-shadow: 1px 1px 4px #fff0ff; */
+    /* text-shadow: 1px 1px 5px #fff0ff; */
+    /* text-shadow: 1px 1px 5px #dbb9ea; */
+    /* text-shadow: 1px 1px 5px #dfc1ec; */
+    /* background-image: linear-gradient(45deg, #f1c7ef, #7980d8); */
+    box-shadow: inset -2px -2px 4px rgb(55 58 136 / 50%), 1px 3px 10px rgb(86 91 170 / 100%);
 }
 
 
