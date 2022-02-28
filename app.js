@@ -6,47 +6,92 @@ const port = 8000;
 
 app.set("view engine", "ejs");
 
-app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + "/public"));
 
 
 // var toDoItem = "";
-var toDoItems = [
+let toDoItems = [
+    "Make Unicorn Tail smoothie for breakfast",
+    "Go to Mr. McGriffith class's at 13:00 AM, North Pole Hall",
     "Study \"Moon Magic & Psychic Mediumship\" tonight",
-    "Go to class \"How To Fly Efficiently With Magic Broom\" with Professor Nicholas M. McGriffith at 13:31 AM",
-
+    // "Go to class \"How To Fly Efficiently With Magic Broom\" with Professor Nicholas M. McGriffith at 13:31 AM",
 ];
+let workToDoItems = [];
+let homeToDoItems = [];
+// let historyToDoItems = [];
 
 
 app.get('/', (req, res) => {
 
-    var today = new Date();
+    let today = new Date();
 
     // Get only day name
     // var options = { weekday: 'long' };
 
     // Get full date long format
-    var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
     
-    var day = today.toLocaleDateString("en-US", options)
+    let day = today.toLocaleDateString("en-US", options)
 
-    res.render("index", { newDay: day, toDoListItems: toDoItems });
+    // res.render("index", { newDay: day, toDoListItems: toDoItems });
+    res.render("index", { listTitle: day, toDoListItems: toDoItems });
 
     // console.log("✅ Everything works perfectly. GriffinPixz caught a GET request to \"/\".");
 
 });
 
-
 app.post("/", (req, res) => { 
 
-    var htmlData = req.body;
-    console.log("* data value => " + htmlData.newItem);
+    console.log(req.body);
 
-    var toDoItem = htmlData.newItem;
-    toDoItems.push(toDoItem);
+    let htmlData = req.body;
 
-    res.redirect("/");
+    let toDoItem = htmlData.newItem;
+    console.log("* To do item => " + toDoItem);
 
+    // toDoItems.push(toDoItem);
+
+    // res.redirect("/");
+
+    if (htmlData.toDoListTitle === "Work") {
+        workToDoItems.push(toDoItem);
+        res.redirect("/worklist");
+    } else { 
+        toDoItems.push(toDoItem);
+        res.redirect("/");
+    }
+});
+
+
+app.get('/work', (req, res) => { 
+    res.render("index", { listTitle: "Work", toDoListItems: workToDoItems });
+});
+
+app.post('/work', (req, res) => { 
+    let workData = req.body;
+    let workToDoItem = workData.newItem;
+    workToDoItems.push(workToDoItem);
+
+    res.redirect("/worklist");
+});
+
+
+app.get('/home', (req, res) => { 
+    res.render("index", { listTitle: "Home", toDoListItems: homeToDoItems });
+});
+
+app.post('/home', (req, res) => { 
+    let workData = req.body;
+    let workToDoItem = workData.newItem;
+    workToDoItems.push(workToDoItem);
+
+    res.redirect("/home");
+});
+
+
+app.get('/about', (req, res) => { 
+    res.render("about");
 });
 
 

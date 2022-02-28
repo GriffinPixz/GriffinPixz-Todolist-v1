@@ -1,0 +1,31 @@
+<!-- <h2 class="date"><%= newDay %></h2> -->
+
+
+<div class="todolist-container">
+    <ul class="todo-list">
+
+        <% for (var i=0; i < toDoListItems.length; i++) { %>
+
+            toDoListItems.forEach(listItem => console.log(element));
+            <li class="todo-list-item">
+                <!-- <div>
+                            <input type="checkbox">
+                        </div> -->
+                <div class="todo-list-item-content">
+                    <div class="todo-no-wrap">
+                        <!-- <input type="checkbox"> -->
+                        <span class="todo-no">
+                            <%= 1+i %>
+                        </span>
+                    </div>
+                    <div class="todo-list-item-text">
+                        <%= toDoListItems[i] %>
+                    </div>
+                </div>
+                <!-- <i class="fa-solid fa-broom todo-list-item-icon"></i> -->
+                <input type="checkbox" class="todo-list-item-checkbox">
+            </li>
+            <% } %>
+
+    </ul>
+</div>
