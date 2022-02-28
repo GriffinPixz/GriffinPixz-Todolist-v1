@@ -67,6 +67,7 @@ app.post("/", (req, res) => {
 app.get('/worklist', (req, res) => { 
     res.render("index", { listTitle: "Work To Do List", toDoListItems: workToDoItems });
 });
+
 app.post('/worklist', (req, res) => { 
     let workData = req.body;
     let workToDoItems = workData.newItem;
