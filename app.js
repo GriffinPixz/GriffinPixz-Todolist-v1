@@ -1,5 +1,8 @@
 const express = require('express')
 const bodyParser = require("body-parser");
+const date = require(__dirname + "/views/date.js");
+
+// console.log(date);
 
 const app = express()
 const port = 8000;
@@ -9,35 +12,39 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
-
+// ******************** Variables ********************
 // var toDoItem = "";
-let toDoItems = [
+let todayToDoItems = [
     "Make Unicorn Tail smoothie for breakfast",
     "Go to Mr. McGriffith class's at 13:00 AM, North Pole Hall",
     "Study \"Moon Magic & Psychic Mediumship\" tonight",
     // "Go to class \"How To Fly Efficiently With Magic Broom\" with Professor Nicholas M. McGriffith at 13:31 AM",
 ];
-let workToDoItems = [];
-let homeToDoItems = [];
+
+let homeToDoItems = [
+    "Go grocery shopping: Cow milk, Oat milk, Mozzarella cheese, Pastas, Avocado, Eggs, Sauces, Broccoli, Bell peppers, Onions, Garlics, Chicken, Beef, Yoghurt, Green tea powder, Tea",
+    "Cook delicious dinner and take out trash",
+    "Organize living room"
+];
+
+let workToDoItems = [
+    "Finish client's web design",
+    "Update portfolio"
+];
+
 // let historyToDoItems = [];
 
+let year = date.getYear();
 
+// ******************** Today ********************
 app.get('/', (req, res) => {
 
-    let today = new Date();
+    // let day = date();
+    let day = date.getDate();
+    // let day = date.getDay();
 
-    // Get only day name
-    // var options = { weekday: 'long' };
-
-    // Get full date long format
-    let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    
-    let day = today.toLocaleDateString("en-US", options)
-
-    // res.render("index", { newDay: day, toDoListItems: toDoItems });
-    res.render("index", { listTitle: day, toDoListItems: toDoItems });
-
-    // console.log("✅ Everything works perfectly. GriffinPixz caught a GET request to \"/\".");
+    // res.render("index", { newDay: day, toDoListItems: todayToDoItems });
+    res.render("index", { listTitle: day, toDoListItems: todayToDoItems, thisYear: year });
 
 });
 
@@ -54,18 +61,34 @@ app.post("/", (req, res) => {
 
     // res.redirect("/");
 
-    if (htmlData.toDoListTitle === "Work") {
+    if (htmlData.toDoListTitle === "Home") {
+        homeToDoItems.push(toDoItem);
+        res.redirect("/home");
+    } else if (htmlData.toDoListTitle === "Work") {
         workToDoItems.push(toDoItem);
-        res.redirect("/worklist");
+        res.redirect("/work");
     } else { 
-        toDoItems.push(toDoItem);
+        todayToDoItems.push(toDoItem);
         res.redirect("/");
     }
 });
 
+// ******************** Home ********************
+app.get('/home', (req, res) => { 
+    res.render("index", { listTitle: "Home", toDoListItems: homeToDoItems, thisYear: year });
+});
 
+app.post('/home', (req, res) => { 
+    let homeData = req.body;
+    let homeToDoItem = homeData.newItem;
+    homeToDoItems.push(homeToDoItem);
+
+    res.redirect("/home");
+});
+
+// ******************** Work ********************
 app.get('/work', (req, res) => { 
-    res.render("index", { listTitle: "Work", toDoListItems: workToDoItems });
+    res.render("index", { listTitle: "Work", toDoListItems: workToDoItems, thisYear: year });
 });
 
 app.post('/work', (req, res) => { 
@@ -73,21 +96,9 @@ app.post('/work', (req, res) => {
     let workToDoItem = workData.newItem;
     workToDoItems.push(workToDoItem);
 
-    res.redirect("/worklist");
+    res.redirect("/work");
 });
 
-
-app.get('/home', (req, res) => { 
-    res.render("index", { listTitle: "Home", toDoListItems: homeToDoItems });
-});
-
-app.post('/home', (req, res) => { 
-    let workData = req.body;
-    let workToDoItem = workData.newItem;
-    workToDoItems.push(workToDoItem);
-
-    res.redirect("/home");
-});
 
 
 app.get('/about', (req, res) => { 
